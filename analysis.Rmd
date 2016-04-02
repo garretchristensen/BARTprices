@@ -15,8 +15,10 @@ mod2<-lm(pricepersqft~commute+commute_sq, data=data)
 A real estate website [estately](http://www.estately.com/bay-area-home-affordability-transit-stop) calculated the average price per square foot of houses in the mile around each BART station, and also listed a few commute times to downtown SF (Embarcadero). I figured that meant I needed to run some regressions.
 
 ```{r, results='asis', message=FALSE}
-plot(pricepersqft~commute, data=data)
+plot(pricepersqft~commute, xlab="Commute in minutes", ylab="$/sq.ft. price of house", data=data)
+text(pricepersqft~commute, labels=Station, cex=0.5, pos=3, data=data)
 abline(mod1)
+
 library(stargazer)
 stargazer(mod1, mod2, se=list(NULL, NULL), type="html", out="stargazerout.html", title="Home Prices and BART Commutes", align=TRUE, column.labels=c("Linear","Quadratic"))
 ```
