@@ -1,5 +1,5 @@
 ---
-title: "Home Prices and BART"
+title: "Home Prices and BART Commute Times"
 author: "Garret Christensen"
 date: "April 1, 2016"
 output: html_document
@@ -22,4 +22,9 @@ stargazer(mod1, mod2, se=list(NULL, NULL), type="html", out="stargazerout.html",
 ```
 
 
-I think that's sort of neat. What's neater is R Markdown, R projects, and how version control is seemlessly built into R Studio. That is *smooth*. The code for this is on Github.
+That means every minute on BART is associated with $12.78 per square foot cheaper house. All the usual caveats: only on average, it's not causal, etc. etc. Also, there's a statistically significant quadratic relationship, but the difference in the relevant region isn't enormous. If you can't read a regression table, what we're looking at is:
+
+$$price=900-12.78*commute$$
+$$price=1043-28.89*commute+.317*commute^2$$
+
+Still, I think that's sort of neat. What's neater is R Markdown, R projects, and how version control is seemlessly built into R Studio. That is *smooth*. The code for this is on [Github](http://www.github.com/garretchristensen/BARTprices).
