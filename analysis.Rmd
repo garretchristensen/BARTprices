@@ -1,0 +1,19 @@
+---
+title: "Home Prices and BART"
+author: "Garret Christensen"
+date: "April 1, 2016"
+output: html_document
+---
+
+```{r}
+data<-read.csv("BART.csv")
+header(data)
+```
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+
+```
+
+
