@@ -7,13 +7,16 @@ output: html_document
 
 ```{r}
 data<-read.csv("BART.csv")
-header(data)
+mod1<-lm(pricepersqft~commute, data = data)
+data$commute_sq=data$commute*data$commute
+mod2<-lm(pricepersqft~commute+commute_sq, data=data)
 ```
 
-You can also embed plots, for example:
+A real estate website <a href="http://estately.com">estately</a> calculated the average price per square foot of houses in the mile around each BART station, and also listed a few commute times to downtown SF (Embarcadero). I figured that meant I needed to run some regressions.
 
 ```{r, echo=FALSE}
-
+plot(pricepersqft~commute, data=data)
+libary(stargazer)
+stargazer(mod1, mod2, se=list(NULL, NULL), type="html", out="stargazerout.html", title="Home Prices and BART Commutes", align=TRUE, column.labels=c("Linear","Quadratic"))
 ```
-
 
