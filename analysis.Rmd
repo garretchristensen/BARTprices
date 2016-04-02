@@ -12,11 +12,14 @@ data$commute_sq=data$commute*data$commute
 mod2<-lm(pricepersqft~commute+commute_sq, data=data)
 ```
 
-A real estate website <a href="http://estately.com">estately</a> calculated the average price per square foot of houses in the mile around each BART station, and also listed a few commute times to downtown SF (Embarcadero). I figured that meant I needed to run some regressions.
+A real estate website [estately](http://www.estately.com/bay-area-home-affordability-transit-stop) calculated the average price per square foot of houses in the mile around each BART station, and also listed a few commute times to downtown SF (Embarcadero). I figured that meant I needed to run some regressions.
 
-```{r, echo=FALSE}
+```{r, results='asis', message=FALSE}
 plot(pricepersqft~commute, data=data)
-libary(stargazer)
+abline(mod1)
+library(stargazer)
 stargazer(mod1, mod2, se=list(NULL, NULL), type="html", out="stargazerout.html", title="Home Prices and BART Commutes", align=TRUE, column.labels=c("Linear","Quadratic"))
 ```
 
+
+I think that's sort of neat. What's neater is R Markdown, R projects, and how version control is seemlessly built into R Studio. That is *smooth*. The code for this is on Github.
